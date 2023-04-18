@@ -2,8 +2,8 @@ package ru.liga.tindertgbot.service;
 
 import ru.liga.tindertgbot.dto.UserDto;
 
-public interface UserStorageService {
+public interface UserTemporaryStorageService {
     void store(UserDto user);
 
-    UserDto load(String userId);
+    UserDto load(int userId);
 }
