@@ -3,6 +3,7 @@ package ru.liga.tindertgbot.dto;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import ru.liga.tindertgbot.dicts.UserSex;
 
 @Data
 @NoArgsConstructor
@@ -10,8 +11,8 @@ import lombok.NoArgsConstructor;
 public class UserDto {
     private int chatId;
     private String name;
-    private String sex;
+    private UserSex sex;
     private String header;
     private String description;
-    private String preference;
+    private UserSex preference;
 }

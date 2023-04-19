@@ -14,7 +14,7 @@ public interface TinderServer {
 
     UserDto searchNext(int userId);
 
-    UserDto searchLikeNext(int userId);
+    UserDto searchWithLikeNext(int userId);
 
-    UserDto searchLikePrev(int userId);
+    UserDto searchWithLikePrev(int userId);
 }
