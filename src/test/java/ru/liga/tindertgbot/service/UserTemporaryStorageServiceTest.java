@@ -4,10 +4,12 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import ru.liga.tindertgbot.dicts.UserSex;
 import ru.liga.tindertgbot.dto.UserDto;
+import ru.liga.tindertgbot.exceptions.StorageException;
 
 import java.io.File;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatException;
 
 
 class UserTemporaryStorageServiceTest {
@@ -52,5 +54,15 @@ class UserTemporaryStorageServiceTest {
                 "Description",
                 UserSex.FEMALE
         ));
+    }
+
+    @Test
+    void loadNotExistsFile() {
+        assertThatException()
+                .isThrownBy(() -> {
+                    storage.load(200);
+                })
+                .isExactlyInstanceOf(StorageException.class)
+                .withMessageContaining("Не удалось прочитать файл из хранилища");
     }
 }

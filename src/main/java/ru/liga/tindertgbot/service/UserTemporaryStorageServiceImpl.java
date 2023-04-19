@@ -1,12 +1,14 @@
 package ru.liga.tindertgbot.service;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import org.springframework.stereotype.Service;
 import ru.liga.tindertgbot.dto.UserDto;
 import ru.liga.tindertgbot.exceptions.StorageException;
 
 import java.io.File;
 import java.io.IOException;
 
+@Service
 public class UserTemporaryStorageServiceImpl  implements UserTemporaryStorageService {
     private final ObjectMapper mapper;
     private final String storageDirectory;
