@@ -1,6 +1,6 @@
 package ru.liga.tindertgbot.bot;
 
-public enum BotAction {
+public enum BotCallbackAction {
     SET_SEX,
     SET_PREFERENCE;
 }

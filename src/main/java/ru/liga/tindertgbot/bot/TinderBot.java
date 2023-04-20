@@ -10,7 +10,6 @@ import org.telegram.telegrambots.meta.api.objects.CallbackQuery;
 import org.telegram.telegrambots.meta.api.objects.Message;
 import org.telegram.telegrambots.meta.api.objects.MessageEntity;
 import org.telegram.telegrambots.meta.api.objects.Update;
-import org.telegram.telegrambots.meta.exceptions.TelegramApiException;
 import ru.liga.tindertgbot.service.BotCallbackHandlerService;
 import ru.liga.tindertgbot.service.BotCommandHandlerService;
 import ru.liga.tindertgbot.service.BotTextHandlerService;
@@ -86,9 +85,7 @@ public class TinderBot extends TelegramLongPollingBot {
     private void handleCallback(CallbackQuery callbackQuery) {
         Message message = callbackQuery.getMessage();
         String[] param = callbackQuery.getData().split(":");
-        BotAction action = BotAction.valueOf(param[0].toUpperCase());
-
-        System.out.println(action + "=" + param[1]);
+        BotCallbackAction action = BotCallbackAction.valueOf(param[0].toUpperCase());
 
         SendMessage response = botCallbackHandlerService.handle(message.getChatId(), action, param[1]);
 

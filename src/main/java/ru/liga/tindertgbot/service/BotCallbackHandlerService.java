@@ -2,7 +2,7 @@ package ru.liga.tindertgbot.service;
 
 import org.springframework.stereotype.Service;
 import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
-import ru.liga.tindertgbot.bot.BotAction;
+import ru.liga.tindertgbot.bot.BotCallbackAction;
 import ru.liga.tindertgbot.dict.Sex;
 import ru.liga.tindertgbot.entity.User;
 
@@ -15,7 +15,7 @@ public class BotCallbackHandlerService extends AbstractBotHandler {
         this.userService = userService;
     }
 
-    public SendMessage handle(long chatId, BotAction action, String value) {
+    public SendMessage handle(long chatId, BotCallbackAction action, String value) {
         SendMessage.SendMessageBuilder sendMessageBuilder = SendMessage.builder();
         sendMessageBuilder.chatId(chatId).text("");
 

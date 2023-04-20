@@ -29,9 +29,6 @@ public class BotCommandHandlerService extends AbstractBotHandler {
 
         User user = userService.get(chatId);
 
-        System.out.println(user);
-        System.out.println(user.getNextEmptyField());
-
         buildFillUserDataResponse(user.getNextEmptyField(), sendMessageBuilder);
 
         return sendMessageBuilder.build();
