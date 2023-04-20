@@ -17,7 +17,7 @@ import ru.liga.tindertgbot.service.BotTextHandlerService;
 import java.util.Optional;
 
 @Component
-public class TinderBot extends TelegramLongPollingBot {
+public class Bot extends TelegramLongPollingBot {
 
     private final BotCommandHandlerService botCommandHandlerService;
     private final BotTextHandlerService botTextHandlerService;
@@ -28,7 +28,7 @@ public class TinderBot extends TelegramLongPollingBot {
     @Value("${bot.token}")
     private String token;
 
-    public TinderBot(BotCommandHandlerService botCommandHandlerService, BotTextHandlerService botTextHandlerService, BotCallbackHandlerService botCallbackHandlerService) {
+    public Bot(BotCommandHandlerService botCommandHandlerService, BotTextHandlerService botTextHandlerService, BotCallbackHandlerService botCallbackHandlerService) {
         this.botCommandHandlerService = botCommandHandlerService;
         this.botTextHandlerService = botTextHandlerService;
         this.botCallbackHandlerService = botCallbackHandlerService;
