@@ -30,25 +30,25 @@ public class UserFileRepositoryImpl implements UserFileRepository {
             mapper.writeValue(new File(fileName(user.getChatId())), user);
         } catch (IOException exception) {
             throw new StorageException(
-                    "Не удалось сохранить файл в хранилище для " + user.getChatId(),
+                    "Не удалось сохранить файл в хранилище: " + fileName(user.getChatId()),
                     exception
             );
         }
     }
 
     @Override
-    public User load(int userId) {
+    public User load(long userId) {
         try {
             return mapper.readValue(new File(fileName(userId)), User.class);
         } catch (IOException exception) {
             throw new StorageException(
-                    "Не удалось прочитать файл из хранилища для " + userId,
+                    "Не удалось прочитать файл из хранилища: " + fileName(userId),
                     exception
             );
         }
     }
 
-    private String fileName (int UserId) {
+    private String fileName (long UserId) {
         return storageDirectory + "/" + UserId + ".json";
     }
 }

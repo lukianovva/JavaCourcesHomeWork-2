@@ -58,4 +58,13 @@ class UserServiceTest {
 
         assertThat(user.getPreference()).isEqualTo(Sex.FEMALE);
     }
+
+    @Test
+    void get() {
+        userService.setPreference(100, Sex.FEMALE);
+
+        User user = userService.get(100);
+
+        assertThat(user.getPreference()).isEqualTo(Sex.FEMALE);
+    }
 }

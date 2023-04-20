@@ -16,8 +16,8 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public User setSex(int userId, Sex sex) {
-        User user = getUser(userId);
+    public User setSex(long userId, Sex sex) {
+        User user = get(userId);
         user.setSex(sex);
 
         storage.store(user);
@@ -26,8 +26,8 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public User setName(int userId, String name) {
-        User user = getUser(userId);
+    public User setName(long userId, String name) {
+        User user = get(userId);
         user.setName(name);
 
         storage.store(user);
@@ -36,8 +36,8 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public User setDescription(int userId, String description) {
-        User user = getUser(userId);
+    public User setDescription(long userId, String description) {
+        User user = get(userId);
         user.setDescription(description);
 
         storage.store(user);
@@ -46,8 +46,8 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public User setPreference(int userId, Sex sex) {
-        User user = getUser(userId);
+    public User setPreference(long userId, Sex sex) {
+        User user = get(userId);
         user.setPreference(sex);
 
         storage.store(user);
@@ -55,12 +55,13 @@ public class UserServiceImpl implements UserService {
         return user;
     }
 
-    private User getUser(int userId) {
+    public User get(long userId) {
         User user;
         try {
             user = storage.load(userId);
         } catch (StorageException storageException) {
             user = new User();
+            user.setChatId(userId);
         }
 
         return user;

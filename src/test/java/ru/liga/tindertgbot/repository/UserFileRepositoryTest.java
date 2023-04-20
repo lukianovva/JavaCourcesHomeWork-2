@@ -1,6 +1,7 @@
 package ru.liga.tindertgbot.repository;
 
 import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
 import ru.liga.tindertgbot.dict.Sex;
 import ru.liga.tindertgbot.entity.User;
@@ -30,6 +31,7 @@ class UserFileRepositoryTest {
     }
 
     @Test
+    @Order(1)
     void store() {
         User user = new User(
                 100,
@@ -44,6 +46,7 @@ class UserFileRepositoryTest {
     }
 
     @Test
+    @Order(2)
     void load() {
         User user = storage.load(100);
 
@@ -58,6 +61,7 @@ class UserFileRepositoryTest {
     }
 
     @Test
+    @Order(3)
     void loadNotExistsFile() {
         assertThatException()
                 .isThrownBy(() -> {

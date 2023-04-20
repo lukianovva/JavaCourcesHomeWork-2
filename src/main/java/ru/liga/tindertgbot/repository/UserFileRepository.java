@@ -5,7 +5,7 @@ import ru.liga.tindertgbot.entity.User;
 public interface UserFileRepository {
     void store(User user);
 
-    User load(int userId);
+    User load(long userId);
 
     void setStorageDirectory(String directory);
 }
