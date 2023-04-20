@@ -1,25 +1,31 @@
-package ru.liga.tindertgbot.service;
+package ru.liga.tindertgbot.repository;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
-import ru.liga.tindertgbot.dto.UserDto;
-import ru.liga.tindertgbot.exceptions.StorageException;
+import ru.liga.tindertgbot.entity.User;
+import ru.liga.tindertgbot.exception.StorageException;
 
 import java.io.File;
 import java.io.IOException;
 
 @Service
-public class UserTemporaryStorageServiceImpl  implements UserTemporaryStorageService {
+public class UserFileRepositoryImpl implements UserFileRepository {
     private final ObjectMapper mapper;
-    private final String storageDirectory;
 
-    public UserTemporaryStorageServiceImpl(String storageDirectory) {
-        this.storageDirectory = storageDirectory;
+    @Value("${store.directory}")
+    private String storageDirectory;
+
+    public UserFileRepositoryImpl() {
         this.mapper = new ObjectMapper();
     }
 
+    public void setStorageDirectory(String directory) {
+        this.storageDirectory = directory;
+    }
+
     @Override
-    public void store(UserDto user) {
+    public void store(User user) {
         try {
             mapper.writeValue(new File(fileName(user.getChatId())), user);
         } catch (IOException exception) {
@@ -31,9 +37,9 @@ public class UserTemporaryStorageServiceImpl  implements UserTemporaryStorageSer
     }
 
     @Override
-    public UserDto load(int userId) {
+    public User load(int userId) {
         try {
-            return mapper.readValue(new File(fileName(userId)), UserDto.class);
+            return mapper.readValue(new File(fileName(userId)), User.class);
         } catch (IOException exception) {
             throw new StorageException(
                     "Не удалось прочитать файл из хранилища для " + userId,

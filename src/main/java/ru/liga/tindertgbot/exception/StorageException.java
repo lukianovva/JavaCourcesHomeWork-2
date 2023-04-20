@@ -1,4 +1,4 @@
-package ru.liga.tindertgbot.exceptions;
+package ru.liga.tindertgbot.exception;
 
 public class StorageException extends RuntimeException {
     public StorageException(String message, Exception exception) {

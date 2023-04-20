@@ -1,15 +1,14 @@
 package ru.liga.tindertgbot.service;
 
-import ru.liga.tindertgbot.dicts.UserSex;
+import ru.liga.tindertgbot.dict.Sex;
+import ru.liga.tindertgbot.entity.User;
 
 public interface UserService {
-    void setSex(int userId, UserSex sex);
+    User setSex(int userId, Sex sex);
 
-    void setName(int userId, String name);
+    User setName(int userId, String name);
 
-    void setDescription(int userId, String description);
+    User setDescription(int userId, String description);
 
-    void setPreferences(int userId, UserSex sex);
-
-    String generateHeaderFromDescription(String description);
+    User setPreference(int userId, Sex sex);
 }

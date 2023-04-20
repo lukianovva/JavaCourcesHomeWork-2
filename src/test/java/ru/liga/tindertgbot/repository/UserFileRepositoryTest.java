@@ -1,10 +1,10 @@
-package ru.liga.tindertgbot.service;
+package ru.liga.tindertgbot.repository;
 
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
-import ru.liga.tindertgbot.dicts.UserSex;
-import ru.liga.tindertgbot.dto.UserDto;
-import ru.liga.tindertgbot.exceptions.StorageException;
+import ru.liga.tindertgbot.dict.Sex;
+import ru.liga.tindertgbot.entity.User;
+import ru.liga.tindertgbot.exception.StorageException;
 
 import java.io.File;
 
@@ -12,8 +12,8 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatException;
 
 
-class UserTemporaryStorageServiceTest {
-    public static UserTemporaryStorageService storage;
+class UserFileRepositoryTest {
+    public static UserFileRepository storage;
 
     private final static String STORAGE_DIRECTORY = "test_storage";
 
@@ -25,18 +25,19 @@ class UserTemporaryStorageServiceTest {
                 throw new RuntimeException("Невозможно создать директорию " + STORAGE_DIRECTORY);
             }
         }
-        storage = new UserTemporaryStorageServiceImpl(STORAGE_DIRECTORY);
+        storage = new UserFileRepositoryImpl();
+        storage.setStorageDirectory(STORAGE_DIRECTORY);
     }
 
     @Test
     void store() {
-        UserDto user = new UserDto(
+        User user = new User(
                 100,
                 "Name",
-                UserSex.MALE,
+                Sex.MALE,
                 "Header",
                 "Description",
-                UserSex.FEMALE
+                Sex.FEMALE
         );
 
         storage.store(user);
@@ -44,15 +45,15 @@ class UserTemporaryStorageServiceTest {
 
     @Test
     void load() {
-        UserDto user = storage.load(100);
+        User user = storage.load(100);
 
-        assertThat(user).isEqualTo(new UserDto(
+        assertThat(user).isEqualTo(new User(
                 100,
                 "Name",
-                UserSex.MALE,
+                Sex.MALE,
                 "Header",
                 "Description",
-                UserSex.FEMALE
+                Sex.FEMALE
         ));
     }
 

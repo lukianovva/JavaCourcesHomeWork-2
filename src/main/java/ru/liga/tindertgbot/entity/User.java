@@ -1,20 +1,24 @@
-package ru.liga.tindertgbot.dto;
+package ru.liga.tindertgbot.entity;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import ru.liga.tindertgbot.dicts.UserSex;
+import ru.liga.tindertgbot.dict.Sex;
 
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class UserDto {
+public class User {
     private int chatId;
     private String name;
-    private UserSex sex;
+    private Sex sex;
     private String header;
     private String description;
-    private UserSex preference;
+    private Sex preference;
+
+    public String getHeader() {
+        return "";
+    }
 }

@@ -1,6 +1,8 @@
 package ru.liga.tindertgbot.bot;
 
 public enum BotCommand {
+    START,
+
     SET_SEX,
     SET_NAME,
     SET_DESCRIPTION,

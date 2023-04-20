@@ -2,62 +2,65 @@ package ru.liga.tindertgbot.service;
 
 
 import org.springframework.stereotype.Service;
-import ru.liga.tindertgbot.dicts.UserSex;
-import ru.liga.tindertgbot.dto.UserDto;
-import ru.liga.tindertgbot.exceptions.StorageException;
+import ru.liga.tindertgbot.dict.Sex;
+import ru.liga.tindertgbot.entity.User;
+import ru.liga.tindertgbot.exception.StorageException;
+import ru.liga.tindertgbot.repository.UserFileRepository;
 
 @Service
 public class UserServiceImpl implements UserService {
+    private final UserFileRepository storage;
 
-    private final UserTemporaryStorageService storage;
-
-    public UserServiceImpl(UserTemporaryStorageService storage) {
+    public UserServiceImpl(UserFileRepository storage) {
         this.storage = storage;
     }
 
     @Override
-    public void setSex(int userId, UserSex sex) {
-        UserDto user = getUser(userId);
+    public User setSex(int userId, Sex sex) {
+        User user = getUser(userId);
         user.setSex(sex);
 
         storage.store(user);
+
+        return user;
     }
 
     @Override
-    public void setName(int userId, String name) {
-        UserDto user = getUser(userId);
+    public User setName(int userId, String name) {
+        User user = getUser(userId);
         user.setName(name);
 
         storage.store(user);
+
+        return user;
     }
 
     @Override
-    public void setDescription(int userId, String description) {
-        UserDto user = getUser(userId);
+    public User setDescription(int userId, String description) {
+        User user = getUser(userId);
         user.setDescription(description);
 
         storage.store(user);
+
+        return user;
     }
 
     @Override
-    public void setPreferences(int userId, UserSex sex) {
-        UserDto user = getUser(userId);
+    public User setPreference(int userId, Sex sex) {
+        User user = getUser(userId);
         user.setPreference(sex);
 
         storage.store(user);
+
+        return user;
     }
 
-    @Override
-    public String generateHeaderFromDescription(String description) {
-        return null;
-    }
-
-    private UserDto getUser(int userId) {
-        UserDto user;
+    private User getUser(int userId) {
+        User user;
         try {
             user = storage.load(userId);
         } catch (StorageException storageException) {
-            user = new UserDto();
+            user = new User();
         }
 
         return user;

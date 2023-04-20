@@ -1,6 +1,6 @@
-package ru.liga.tindertgbot.dicts;
+package ru.liga.tindertgbot.dict;
 
-public enum UserSex {
+public enum Sex {
     MALE,
     FEMALE,
     UNKNOWN;
