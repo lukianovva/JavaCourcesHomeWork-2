@@ -3,4 +3,4 @@ target
 test_storage
 storage
 data
-main/resources/application.properties
+src/main/resources/application.properties
