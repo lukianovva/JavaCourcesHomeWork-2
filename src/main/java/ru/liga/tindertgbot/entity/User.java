@@ -21,6 +21,7 @@ public class User {
 
     @JsonIgnore
     public String getNextEmptyField() {
+        //todo ставь лучше null справа при сравнении, разницы нет, просто так принято и привычнее выглядит
         if (null == sex) {
             return "sex";
         }

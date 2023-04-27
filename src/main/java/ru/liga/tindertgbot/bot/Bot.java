@@ -1,6 +1,7 @@
 package ru.liga.tindertgbot.bot;
 
 
+import lombok.RequiredArgsConstructor;
 import lombok.SneakyThrows;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
@@ -28,6 +29,7 @@ public class Bot extends TelegramLongPollingBot {
     @Value("${bot.token}")
     private String token;
 
+    //todo этот конструктор можно заменить аннотацией @RequiredArgsConstructor у класса
     public Bot(BotCommandHandlerService botCommandHandlerService, BotTextHandlerService botTextHandlerService, BotCallbackHandlerService botCallbackHandlerService) {
         this.botCommandHandlerService = botCommandHandlerService;
         this.botTextHandlerService = botTextHandlerService;

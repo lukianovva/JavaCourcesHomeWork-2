@@ -10,6 +10,8 @@ import java.io.File;
 import java.io.IOException;
 
 @Service
+//todo почему у тебя данные хранятся в файлах, а не в базе данных
+// надо переделать под БД
 public class UserFileRepositoryImpl implements UserFileRepository {
     private final ObjectMapper mapper;
 

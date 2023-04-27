@@ -13,6 +13,7 @@ public class ChoosePreferenceMessage {
         List<List<InlineKeyboardButton>> buttons = new ArrayList<>();
 
         buttons.add(Arrays.asList(
+                //todo создание объекта можно вынести в метод
                 InlineKeyboardButton.builder().text("Сударъ").callbackData("SET_PREFERENCE:MALE").build(),
                 InlineKeyboardButton.builder().text("Сударыня").callbackData("SET_PREFERENCE:FEMALE").build(),
                 InlineKeyboardButton.builder().text("Всех").callbackData("SET_PREFERENCE:ALL").build()

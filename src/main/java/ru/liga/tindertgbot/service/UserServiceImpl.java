@@ -26,6 +26,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
+    //todo тоже что и выше
     public User setName(long userId, String name) {
         User user = get(userId);
         user.setName(name);

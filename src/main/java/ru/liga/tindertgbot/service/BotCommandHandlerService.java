@@ -14,6 +14,7 @@ public class BotCommandHandlerService extends AbstractBotHandler {
     }
 
     public SendMessage handle(long chatId, BotCommand command) {
+        //todo лучше заменить на if()
         switch (command) {
             case START -> {
                 return start(chatId);

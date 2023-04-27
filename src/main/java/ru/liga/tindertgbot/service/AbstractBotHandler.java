@@ -14,6 +14,7 @@ public abstract class AbstractBotHandler {
         }
 
         switch (nextEmptyField) {
+            //todo строки для кейсов надо вынести в константы
             case "sex" -> {
                 ChooseSexMessage.setPropertiesTo(sendMessageBuilder);
             }

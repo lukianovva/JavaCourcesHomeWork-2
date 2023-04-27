@@ -20,6 +20,7 @@ public class ChooseSexMessage {
 
         sendMessageBuilder
                 .text("Вы сударь иль сударыня?")
+                //todo InlineKeyboardMarkup лучше вынести в отдельный метод, проще будет читать
                 .replyMarkup(InlineKeyboardMarkup.builder().keyboard(buttons).build());
     }
 }

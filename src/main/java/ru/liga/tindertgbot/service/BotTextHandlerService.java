@@ -22,6 +22,7 @@ public class BotTextHandlerService extends AbstractBotHandler {
         String nextEmptyField = user.getNextEmptyField();
 
         switch (nextEmptyField) {
+            //todo "name" и "description" лучше вынести в константы и назвать по базнесу
             case "name" -> {
                 setName(chatId, value, sendMessageBuilder);
             }
